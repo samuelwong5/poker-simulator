@@ -6,22 +6,24 @@ import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class Deck {
-    private List<Card> deck;
-    public Deck(){
-    	deck = new ArrayList<Card>(52);
+    private List<Card> deck;                                // Deck of cards
+    public Deck(){                                          // Constructor
+    	deck = new ArrayList<Card>(52);                     // Initializes a deck of 52 cards in order
     	for(Rank r : Rank.values()){
     		for(Suit s : Suit.values()){
     			deck.add(new Card(r, s));
     		}
     	}
     }
-    public Card getCard(){
+    
+    public Card getCard(){                                  // Get the card on the top of the deck
     	if(deck.isEmpty()){
     	    throw new NoSuchElementException();	
     	}
     	return deck.remove(0);
     }
-    public void shuffle(){
+    
+    public void shuffle(){                                  // Shuffles the deck
     	Random rnd = new Random();
     	List<Card> newDeck = new ArrayList<Card>(size());
     	while(!deck.isEmpty()){
@@ -29,10 +31,12 @@ public class Deck {
     	}
     	deck = newDeck;
     }
-    public int size(){
+    
+    public int size(){                                      // Returns the size of the deck
     	return deck.size();
     }
-    public String toString(){
+    
+    public String toString(){                               
     	StringBuilder sb = new StringBuilder();
     	sb.append("{");
     	for(int i=0; i<size(); i++){

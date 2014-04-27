@@ -1,6 +1,7 @@
 package Deck;
 
 public enum Suit {
+	
     DIAMONDS, CLUBS, HEARTS, SPADES;
     
     public int getInt(Suit s){
@@ -15,6 +16,7 @@ public enum Suit {
     		return 4;
     	}
     }
+    
     public String toString(Suit s){
     	switch(s){
     	case DIAMONDS:

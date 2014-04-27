@@ -7,13 +7,16 @@ import java.util.List;
 public class Main {
 
 	public static void main(String[] args) {
-		Table t = new Table(4);
-		for(int i=0; i<10000; i++){
+		int trials = Integer.parseInt(args[0]);
+		int players = Integer.parseInt(args[1]);
+		
+		Table t = new Table(players);
+		for(int i=0; i<trials; i++){
 			System.out.println(t.play().toString() + " wins.\n\n");
 			t.resetTable();
 		}
 		int[] hands = t.getHands();
-		int totalHands = 40000;
+		int totalHands = trials * 4;
 	    StringBuilder sb = new StringBuilder();
 		sb.append("Straight Flush: " + round(hands[8], totalHands) + "\n");
 		sb.append("Quad:           " + round(hands[7], totalHands) + "\n");
@@ -44,7 +47,7 @@ public class Main {
     	StringBuilder sb = new StringBuilder();
     	String first = String.valueOf(a);
     	sb.append(first);
-    	for(int i = 0; i<5-first.length(); i++){
+    	for(int i = 0; i<8-first.length(); i++){
     		sb.append(" ");
     	}
     	sb.append(c);
